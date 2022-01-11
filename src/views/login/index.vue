@@ -13,13 +13,35 @@
           <label>
             <span class="loginId">userName</span>
           </label>
-          <el-input color="#946dd6" v-model="netLogon.name"></el-input>
+          <span> </span>
+          <el-input
+            color="#946dd6"
+            v-model="netLogon.name"
+            placeholder="UserName"
+          >
+            <template #prefix>
+              <span class="custom-icon">
+                <svg-icon icon="icon-name"></svg-icon>
+              </span>
+            </template>
+          </el-input>
         </el-form-item>
         <el-form-item>
           <label>
-            <span class="loginId">Password</span>
+            <span class="loginId"></span>
           </label>
-          <el-input v-model="netLogon.password"></el-input>
+          <el-input v-model="netLogon.password" placeholder="Password">
+            <template #prefix>
+              <span class="custom-icon">
+                <svg-icon icon="icon-mima"></svg-icon>
+              </span>
+            </template>
+            <template #suffix>
+              <span class="custom-icon-isyc">
+                <svg-icon icon="icon-yc"></svg-icon>
+              </span>
+            </template>
+          </el-input>
         </el-form-item>
       </el-form>
       <el-button color="#946dd6" class="login-btn" type="primary"
@@ -31,7 +53,6 @@
 
 <script setup>
 import { reactive } from 'vue'
-
 const netLogon = reactive({
   name: '',
   password: ''
@@ -85,6 +106,9 @@ body {
   }
   .login-btn {
     width: 260px;
+  }
+  .custom-icon-isyc {
+    cursor: pointer;
   }
 }
 </style>

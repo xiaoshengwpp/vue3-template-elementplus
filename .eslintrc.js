@@ -1,5 +1,5 @@
 // ESLint 配置文件遵循 commonJS 的导出规则，所导出的对象就是 ESLint 的配置对象
-// 文档：https://eslint.bootcss.com/docs/user-guide/configuring
+// 文档：https://eslint.bootcss.com/docs/user-guide/configuring  具体配置规则网上一搜一大把emmm 按需配置
 module.exports = {
   // 表示当前目录即为根目录，ESLint 规则将被限制到该目录下
   root: true,
@@ -22,6 +22,7 @@ module.exports = {
    * "error" 或 2 - 开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出)
    */
   rules: {
+    "vars": 0,
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'space-before-function-paren': 'off'

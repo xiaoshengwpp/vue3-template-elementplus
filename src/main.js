@@ -5,6 +5,9 @@ import store from './store'
 import installElementPlus from './plugins/element'
 // 初始化样式
 import './assets/css/initializeStyle.css'
+// 导入 svgIcon
+import installIcons from '@/icons'
 const app = createApp(App)
 installElementPlus(app)
+installIcons(app)
 app.use(store).use(router).mount('#app')
