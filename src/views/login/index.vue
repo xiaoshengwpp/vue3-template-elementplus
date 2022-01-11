@@ -28,7 +28,7 @@
         </el-form-item>
         <el-form-item>
           <label>
-            <span class="loginId"></span>
+            <span class="loginId">Password</span>
           </label>
           <el-input v-model="netLogon.password" placeholder="Password">
             <template #prefix>
@@ -47,6 +47,11 @@
       <el-button color="#946dd6" class="login-btn" type="primary"
         >Log in</el-button
       >
+    </div>
+    <img class="bg-tp" src="@/assets/images/svWpjU2.jpeg" width="400" alt="" />
+    <div class="main-title">
+      <h3>Vue3</h3>
+      <h3>template-ElementPlus</h3>
     </div>
   </div>
 </template>
@@ -87,6 +92,25 @@ body {
   transform: translate(-50%, -50%);
   background: #ffffff;
   border-radius: 12px;
+  overflow: hidden;
+  .bg-tp {
+    width: 436px;
+    position: absolute;
+    left: 106px;
+    bottom: 0px;
+    opacity: 0.7;
+  }
+  .main-title {
+    position: absolute;
+    left: 88px;
+    top: 100px;
+    color: #374161;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 50px;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+  }
 }
 .form-warp {
   position: absolute;
@@ -100,12 +124,22 @@ body {
     text-align: center;
     padding-right: 60px;
     margin-bottom: 40px;
+    font-size: 35px;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
   }
   .loginId {
     color: #494e66;
+    font-weight: 600;
+    font-size: 12px;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
   }
   .login-btn {
     width: 260px;
+    font-weight: 600;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
   }
   .custom-icon-isyc {
     cursor: pointer;
