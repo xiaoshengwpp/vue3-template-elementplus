@@ -7,17 +7,19 @@
         label-position="top"
         label-width="100px"
         :model="netLogon"
+        :rules="loginRules"
         style="max-width: 260px"
       >
-        <el-form-item>
+        <el-form-item prop="username">
           <label>
             <span class="loginId">userName</span>
           </label>
           <span> </span>
           <el-input
             color="#946dd6"
-            v-model="netLogon.name"
+            v-model="netLogon.username"
             placeholder="UserName"
+            name="username"
           >
             <template #prefix>
               <span class="custom-icon">
@@ -26,19 +28,28 @@
             </template>
           </el-input>
         </el-form-item>
-        <el-form-item>
+        <el-form-item prop="password">
           <label>
             <span class="loginId">Password</span>
           </label>
-          <el-input v-model="netLogon.password" placeholder="Password">
+          <el-input
+            v-model="netLogon.password"
+            placeholder="Password"
+            name="password"
+            :type="passwordType"
+          >
             <template #prefix>
               <span class="custom-icon">
                 <svg-icon icon="icon-mima"></svg-icon>
               </span>
             </template>
             <template #suffix>
-              <span class="custom-icon-isyc">
-                <svg-icon icon="icon-yc"></svg-icon>
+              <span class="custom-icon-isyc" @click="onChangepassType">
+                <svg-icon
+                  :icon="
+                    passwordType === 'password' ? 'icon-yc' : 'icon-xianshi'
+                  "
+                ></svg-icon>
               </span>
             </template>
           </el-input>
@@ -57,11 +68,41 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
-const netLogon = reactive({
-  name: '',
-  password: ''
+import { ref } from 'vue'
+import { validatePassword } from './rules'
+// 定义数据
+const netLogon = ref({
+  username: 'admin',
+  password: '123456'
 })
+// 校验规则
+// eslint-disable-next-line no-unused-vars
+const loginRules = ref({
+  username: [
+    {
+      required: true,
+      trigger: 'blur',
+      message: '用户名不能为空'
+    }
+  ],
+  password: [
+    {
+      required: true,
+      trigger: 'blur',
+      validator: validatePassword()
+    }
+  ]
+})
+
+// 处理密码框密码是否明文显示
+const passwordType = ref('password')
+const onChangepassType = () => {
+  if (passwordType.value === 'password') {
+    passwordType.value = 'text'
+  } else {
+    passwordType.value = 'password'
+  }
+}
 </script>
 <style>
 body {
@@ -105,7 +146,6 @@ body {
     left: 88px;
     top: 100px;
     color: #374161;
-    font-weight: 600;
     font-size: 30px;
     line-height: 50px;
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
