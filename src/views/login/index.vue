@@ -9,6 +9,7 @@
         :model="netLogon"
         :rules="loginRules"
         style="max-width: 260px"
+        ref="loginRef"
       >
         <el-form-item prop="username">
           <label>
@@ -55,7 +56,12 @@
           </el-input>
         </el-form-item>
       </el-form>
-      <el-button color="#946dd6" class="login-btn" type="primary"
+      <el-button
+        color="#946dd6"
+        class="login-btn"
+        type="primary"
+        @click="loginButton"
+        :loading="loading"
         >Log in</el-button
       >
     </div>
@@ -70,6 +76,7 @@
 <script setup>
 import { ref } from 'vue'
 import { validatePassword } from './rules'
+import { useStore } from 'vuex'
 // 定义数据
 const netLogon = ref({
   username: 'admin',
@@ -102,6 +109,33 @@ const onChangepassType = () => {
   } else {
     passwordType.value = 'password'
   }
+}
+
+// 登录逻辑
+const loading = ref(false)
+const store = useStore()
+// vue2中ref 是this.$refs 最新版如下写法
+const loginRef = ref(null)
+const loginButton = () => {
+  // 表单验证
+  loginRef.value.validate((item) => {
+    if (!item) {
+      return false
+    }
+    console.log(process.env.VUE_APP_BASE_API)
+    // 触发登录动作
+    loading.value = true
+    store
+      .dispatch('user/login', netLogon.value)
+      .then(() => {
+        loading.value = false
+        // 登录后的处理
+      })
+      .catch((err) => {
+        console.log('失败:', err)
+        loading.value = false
+      })
+  })
 }
 </script>
 <style>
