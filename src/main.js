@@ -7,6 +7,8 @@ import installElementPlus from './plugins/element'
 import './assets/css/initializeStyle.css'
 // 导入 svgIcon
 import installIcons from '@/icons'
+// 路由前置守卫
+import './routingGuard'
 const app = createApp(App)
 installElementPlus(app)
 installIcons(app)

@@ -5,6 +5,7 @@ import { login } from '@/api/sys'
 // import md5 from 'md5' mock 数据后 加 这一步 太麻烦了
 import { setItem, getItem } from '@/utils/storage'
 import { TOKEN } from '@/constant'
+import router from '@/router'
 export default {
   // namespaced: true 的方式使其成为带命名空间的模块。保证在变量名一样的时候，添加一个父级名拼接。
   namespaced: true,
@@ -12,9 +13,6 @@ export default {
   state: () => ({
     token: getItem(TOKEN) || ''
   }),
-  // getters 类似 computed 在这里面写个方法
-  getters: {
-  },
   // mutations 类似methods 写方法对数据做出更改(同步操作)
   mutations: {
     setToken(state, token) {
@@ -38,6 +36,7 @@ export default {
           .then(data => {
             // console.log(data)
             this.commit('user/setToken', data.token)
+            router.push('/')
             resolve()
           })
           .catch(err => {
