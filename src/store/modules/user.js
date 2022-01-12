@@ -6,6 +6,8 @@ import { login, getUserInfo } from '@/api/sys'
 import { setItem, getItem, removeAllItem } from '@/utils/storage'
 import { TOKEN } from '@/constant'
 import router from '@/router'
+import { setTimeStamp } from '@/utils/auth'
+
 export default {
   // namespaced: true 的方式使其成为带命名空间的模块。保证在变量名一样的时候，添加一个父级名拼接。
   namespaced: true,
@@ -41,6 +43,8 @@ export default {
             // console.log(data)
             this.commit('user/setToken', data.token)
             router.push('/')
+            // 保存登录时间
+            setTimeStamp()
             resolve()
           })
           .catch(err => {
