@@ -9,7 +9,7 @@
   >
     <el-sub-menu index="1">
       <template #title>
-        <el-icon><location /></el-icon>
+        <el-icon><home-filled /></el-icon>
         <span>一级菜单1</span>
       </template>
 
@@ -20,7 +20,7 @@
       <span>二级菜单2</span>
     </el-menu-item>
     <el-menu-item index="3">
-      <el-icon><document /></el-icon>
+      <el-icon><icon-menu /></el-icon>
       <span>三级菜单3</span>
     </el-menu-item>
     <el-menu-item index="4">
@@ -31,6 +31,7 @@
 </template>
 
 <script setup>
+import { Menu as IconMenu, Setting, HomeFilled } from '@element-plus/icons-vue'
 </script>
 
 <style lang="scss" scoped>

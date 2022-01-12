@@ -9,6 +9,7 @@
             :size="40"
             :src="$store.getters.userInfo.avatar"
           ></el-avatar>
+          <el-icon><setting /></el-icon>
         </div>
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
@@ -18,9 +19,10 @@
             <a target="_blank" href="">
               <el-dropdown-item>GitHub</el-dropdown-item>
             </a>
-            <span @click="logout">
-              <el-dropdown-item divided> 退出登录 </el-dropdown-item>
-            </span>
+
+            <el-dropdown-item divided @click="logout">
+              退出登录
+            </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -30,6 +32,8 @@
 
 <script setup>
 import { useStore } from 'vuex'
+import { Setting } from '@element-plus/icons-vue'
+
 const store = useStore()
 const logout = () => {
   store.dispatch('user/logout')
