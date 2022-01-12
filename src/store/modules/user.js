@@ -1,9 +1,9 @@
 /**
  * 用于处理所有和用户相关的内容
  * */
-import { login } from '@/api/sys'
+import { login, getUserInfo } from '@/api/sys'
 // import md5 from 'md5' mock 数据后 加 这一步 太麻烦了
-import { setItem, getItem } from '@/utils/storage'
+import { setItem, getItem, removeAllItem } from '@/utils/storage'
 import { TOKEN } from '@/constant'
 import router from '@/router'
 export default {
@@ -11,13 +11,17 @@ export default {
   namespaced: true,
   // state 类似 data 这里面写入数据
   state: () => ({
-    token: getItem(TOKEN) || ''
+    token: getItem(TOKEN) || '',
+    userInfo: {}
   }),
   // mutations 类似methods 写方法对数据做出更改(同步操作)
   mutations: {
     setToken(state, token) {
       state.token = token
       setItem(TOKEN, token)
+    },
+    setUserInfo(state, userInfo) {
+      state.userInfo = userInfo
     }
   },
   // actions 类似methods 写方法对数据做出更改(异步操作)
@@ -43,6 +47,23 @@ export default {
             reject(err)
           })
       })
+    },
+    /**
+     * 获取用户信息
+    */
+    async getUserInfo(context) {
+      const res = await getUserInfo()
+      this.commit('user/setUserInfo', res)
+      return res
+    },
+    /**
+     * 处理用户推出登录
+    */
+    logout() {
+      this.commit('user/setToken', '')
+      this.commit('user/setUserInfo', {})
+      removeAllItem()
+      router.push('/login')
     }
   }
 }
