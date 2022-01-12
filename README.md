@@ -69,6 +69,18 @@ SvgIcon：components--SvgIcon 文件内 使用方法：
 >
 > 是不是 后面我能使用 ref 的地方都使用 ref，毕竟这本身也没什么问题 对不对？
 
+### 问题记录 2
+
+```vue
+<el-dropdown-item @click="logout" divided>
+              退出登录
+</el-dropdown-item>
+如上 这里用的最新版的饿了么ui库 1.3.0-beta.3 这个组件绑定点击事件 为何不生效
+emmmm 这个问题困扰了我好久 始终没找到具体原因
+看了下他这个组件实现好像也没什么问题 算了 不纠结这个问题了 只当是它bug了
+我在外面包了一层 span 把点击时间绑定在span上解决了问题
+```
+
 ```javascript
 //安装依赖
 npm i
@@ -99,3 +111,4 @@ npm run lint
    - 初始化 cli 创建的项目、初始化 css 样式
    - 初始化 login 页面
    - 实现 svgicon 组件 用于更方便的使用自定义图标
+3. 2022
