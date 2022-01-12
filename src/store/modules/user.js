@@ -37,7 +37,7 @@ export default {
         })
           .then(data => {
             // console.log(data)
-            this.commit('user/setToken', data.data.data.token)
+            this.commit('user/setToken', data.token)
             resolve()
           })
           .catch(err => {
