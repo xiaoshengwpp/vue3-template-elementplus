@@ -5,6 +5,7 @@ import store from './store'
 import installElementPlus from './plugins/element'
 // 初始化样式
 import './assets/css/initializeStyle.css'
+import './styles/index.scss'
 // 导入 svgIcon
 import installIcons from '@/icons'
 // 路由前置守卫
