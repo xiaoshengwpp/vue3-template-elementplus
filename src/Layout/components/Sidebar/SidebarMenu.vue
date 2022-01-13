@@ -2,6 +2,7 @@
   <!-- 一级 menu 菜单 -->
   <el-menu
     :default-active="activeMenu"
+    :collapse="!$store.getters.sidebarOpened"
     :background-color="$store.getters.cssVar.menuBg"
     :text-color="$store.getters.cssVar.menuText"
     :active-text-color="$store.getters.cssVar.menuActiveText"
@@ -19,23 +20,25 @@
 <script setup>
 import { computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { filterRouters, generateMenus } from '@/utils/router'
-import SidebarItem from './SidebarItem.vue'
+import { filterRouters, generateMenus } from '@/utils/route'
+import SidebarItem from './SidebarItem'
 
+// 计算路由表结构
 const router = useRouter()
 const routes = computed(() => {
   const filterRoutes = filterRouters(router.getRoutes())
   return generateMenus(filterRoutes)
 })
-// console.log(JSON.stringify(routes.value))
 
 // 计算高亮 menu 的方法
 const route = useRoute()
 const activeMenu = computed(() => {
-  const { path } = route
+  const { meta, path } = route
+  if (meta.activeMenu) {
+    return meta.activeMenu
+  }
   return path
 })
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

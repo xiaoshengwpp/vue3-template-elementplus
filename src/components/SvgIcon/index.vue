@@ -1,26 +1,25 @@
 <template>
-  <!-- 展示外部图标 -->
   <div
     v-if="isExternal"
     :style="styleExternalIcon"
     class="svg-external-icon svg-icon"
     :class="className"
   />
-  <!-- 展示内部图标 -->
   <svg v-else class="svg-icon" :class="className" aria-hidden="true">
     <use :xlink:href="iconName" />
   </svg>
 </template>
+
 <script setup>
 import { isExternal as external } from '@/utils/validate'
 import { defineProps, computed } from 'vue'
 const props = defineProps({
-  // 接收的图标
+  // icon 图标
   icon: {
     type: String,
     required: true
   },
-  // 图标自定义类名
+  // 图标类名
   className: {
     type: String,
     default: ''
@@ -28,23 +27,23 @@ const props = defineProps({
 })
 
 /**
- * 通过计算属性判断当前图标是否为外部图标
+ * 判断是否为外部图标
  */
 const isExternal = computed(() => external(props.icon))
 /**
- * 处理外部图标样式
+ * 外部图标样式
  */
 const styleExternalIcon = computed(() => ({
   mask: `url(${props.icon}) no-repeat 50% 50%`,
   '-webkit-mask': `url(${props.icon}) no-repeat 50% 50%`
 }))
 /**
- * 处理内部图标样式
+ * 项目内图标
  */
 const iconName = computed(() => `#icon-${props.icon}`)
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .svg-icon {
   width: 1em;
   height: 1em;

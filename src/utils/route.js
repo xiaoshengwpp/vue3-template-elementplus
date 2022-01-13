@@ -6,6 +6,7 @@ import path from 'path'
 /**
  * 返回所有子路由
  */
+
 const getChildrenRoutes = routes => {
   const result = []
   routes.forEach(route => {
@@ -16,9 +17,9 @@ const getChildrenRoutes = routes => {
   return result
 }
 /**
- * 处理脱离层级的路由：某个一级路由为其他子路由，则剔除该一级路由，保留路由层级
- * @param {*} routes router.getRoutes()
- */
+  * 处理脱离层级的路由：某个一级路由为其他子路由，则剔除该一级路由，保留路由层级
+  * @param {*} routes router.getRoutes()
+  */
 export const filterRouters = routes => {
   const childrenRoutes = getChildrenRoutes(routes)
   return routes.filter(route => {
@@ -29,8 +30,8 @@ export const filterRouters = routes => {
 }
 
 /**
- * 判断数据是否为空值
- */
+  * 判断数据是否为空值
+  */
 function isNull(data) {
   if (!data) return true
   if (JSON.stringify(data) === '{}') return true
@@ -38,8 +39,8 @@ function isNull(data) {
   return false
 }
 /**
- * 根据 routes 数据，返回对应 menu 规则数组
- */
+  * 根据 routes 数据，返回对应 menu 规则数组
+  */
 export function generateMenus(routes, basePath = '') {
   const result = []
   // 遍历路由表
