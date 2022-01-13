@@ -1,5 +1,7 @@
 <template>
-  <div class="warp">app main</div>
+  <div class="warp">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script setup>
