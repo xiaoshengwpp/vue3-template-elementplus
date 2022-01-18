@@ -153,7 +153,7 @@ const loginButton = () => {
   background-color: rgb(151, 109, 213);
   min-width: 1400px;
 }
-::v-deep .el-input__inner:focus {
+::v-deep(.el-input__inner:focus) {
   border-color: #946dd6;
 }
 .zine-finish {
