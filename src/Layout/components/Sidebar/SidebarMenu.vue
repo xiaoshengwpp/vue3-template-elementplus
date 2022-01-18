@@ -18,27 +18,27 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { filterRouters, generateMenus } from '@/utils/route'
-import SidebarItem from './SidebarItem'
+import { computed } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import { filterRouters, generateMenus } from "@/utils/route";
+import SidebarItem from "./SidebarItem.vue";
 
 // 计算路由表结构
-const router = useRouter()
+const router = useRouter();
 const routes = computed(() => {
-  const filterRoutes = filterRouters(router.getRoutes())
-  return generateMenus(filterRoutes)
-})
+  const filterRoutes = filterRouters(router.getRoutes());
+  return generateMenus(filterRoutes);
+});
 
 // 计算高亮 menu 的方法
-const route = useRoute()
+const route = useRoute();
 const activeMenu = computed(() => {
-  const { meta, path } = route
+  const { meta, path } = route;
   if (meta.activeMenu) {
-    return meta.activeMenu
+    return meta.activeMenu;
   }
-  return path
-})
+  return path;
+});
 </script>
 
 <style lang="scss" scoped></style>

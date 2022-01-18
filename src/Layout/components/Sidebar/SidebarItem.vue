@@ -18,15 +18,15 @@
 </template>
 
 <script setup>
-import MenuItem from './MenuItem'
-import { defineProps } from 'vue'
+import MenuItem from "./MenuItem.vue";
+// import { defineProps } from "vue";
 // 定义 props
 defineProps({
   route: {
     type: Object,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 </script>
 
 <style lang="scss" scoped>

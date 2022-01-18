@@ -25,7 +25,7 @@
             >
               <template #prefix>
                 <span class="custom-icon">
-                  <svg-icon icon="icon-name"></svg-icon>
+                  <!-- <svg-icon icon="icon-name"></svg-icon> -->
                 </span>
               </template>
             </el-input>
@@ -42,16 +42,16 @@
             >
               <template #prefix>
                 <span class="custom-icon">
-                  <svg-icon icon="icon-mima"></svg-icon>
+                  <!-- <svg-icon icon="icon-mima"></svg-icon> -->
                 </span>
               </template>
               <template #suffix>
                 <span class="custom-icon-isyc" @click="onChangepassType">
-                  <svg-icon
+                  <!-- <svg-icon
                     :icon="
                       passwordType === 'password' ? 'icon-yc' : 'icon-xianshi'
                     "
-                  ></svg-icon>
+                  ></svg-icon> -->
                 </span>
               </template>
             </el-input>
@@ -81,69 +81,69 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { validatePassword } from './rules'
-import { useStore } from 'vuex'
+import { ref } from "vue";
+import { validatePassword } from "./rules.js";
+import { useStore } from "vuex";
 // 定义数据
 const netLogon = ref({
-  username: 'admin',
-  password: '123456'
-})
+  username: "admin",
+  password: "123456",
+});
 // 校验规则
 // eslint-disable-next-line no-unused-vars
 const loginRules = ref({
   username: [
     {
       required: true,
-      trigger: 'blur',
-      message: '用户名不能为空'
-    }
+      trigger: "blur",
+      message: "用户名不能为空",
+    },
   ],
   password: [
     {
       required: true,
-      trigger: 'blur',
-      validator: validatePassword()
-    }
-  ]
-})
+      trigger: "blur",
+      validator: validatePassword(),
+    },
+  ],
+});
 
 // 处理密码框密码是否明文显示
-const passwordType = ref('password')
+const passwordType = ref("password");
 const onChangepassType = () => {
-  if (passwordType.value === 'password') {
-    passwordType.value = 'text'
+  if (passwordType.value === "password") {
+    passwordType.value = "text";
   } else {
-    passwordType.value = 'password'
+    passwordType.value = "password";
   }
-}
+};
 
 // 登录逻辑
-const loading = ref(false)
-const store = useStore()
+const loading = ref(false);
+const store = useStore();
 // vue2中ref 是this.$refs 最新版如下写法
-const loginRef = ref(null)
+const loginRef = ref(null);
 const loginButton = () => {
   // 表单验证
   loginRef.value.validate((item) => {
     if (!item) {
-      return false
+      return false;
     }
-    console.log(process.env.VUE_APP_BASE_API)
+    // console.log(process.env.VUE_APP_BASE_API)
     // 触发登录动作
-    loading.value = true
+    loading.value = true;
     store
-      .dispatch('user/login', netLogon.value)
+      .dispatch("user/login", netLogon.value)
       .then(() => {
-        loading.value = false
+        loading.value = false;
         // 登录后的处理
       })
       .catch((err) => {
-        console.log('失败:', err)
-        loading.value = false
-      })
-  })
-}
+        console.log("失败:", err);
+        loading.value = false;
+      });
+  });
+};
 </script>
 
 <style lang="scss" scoped>
@@ -190,8 +190,8 @@ const loginButton = () => {
     color: #374161;
     font-size: 30px;
     line-height: 50px;
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
-      Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
   }
 }
 .form-warp {
@@ -207,21 +207,21 @@ const loginButton = () => {
     padding-right: 60px;
     margin-bottom: 40px;
     font-size: 35px;
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
-      Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
   }
   .loginId {
     color: #494e66;
     font-weight: 600;
     font-size: 12px;
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
-      Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
   }
   .login-btn {
     width: 260px;
     font-weight: 600;
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
-      Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
   }
   .custom-icon-isyc {
     cursor: pointer;

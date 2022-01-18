@@ -33,14 +33,15 @@
 </template>
 
 <script setup>
-import { useStore } from 'vuex'
-import { Setting } from '@element-plus/icons-vue'
-import Hamburger from '@/components/Hamburger/index'
-import Breadcrumb from './Breadcrumb/index.vue'
-const store = useStore()
+import { useStore } from "vuex";
+import { Setting } from "@element-plus/icons-vue";
+// import Hamburger from "@/components/Hamburger/index";
+import Hamburger from "../../components/Hamburger/index.vue";
+import Breadcrumb from "./Breadcrumb/index.vue";
+const store = useStore();
 const logout = () => {
-  store.dispatch('user/logout')
-}
+  store.dispatch("user/logout");
+};
 </script>
 
 <style lang="scss" scoped>

@@ -21,14 +21,14 @@
 </template>
 
 <script setup>
-import Navbar from './components/Navbar'
-import Sidebar from './components/Sidebar'
-import AppMain from './components/AppMain'
+import Navbar from './components/Navbar.vue'
+import Sidebar from './components/Sidebar/index.vue'
+import AppMain from './components/AppMain.vue'
 </script>
 
 <style lang="scss" scoped>
-@import '~@/styles/mixin.scss';
-@import '~@/styles/variables.scss';
+@import '@/styles/mixin.scss';
+@import '@/styles/variables.scss';
 
 .app-wrapper {
   @include clearfix;

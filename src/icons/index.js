@@ -2,7 +2,7 @@
  * 导入所有的svg图标
   完成svgicon的全局注册
 */
-import SvgIcon from '@/components/SvgIcon'
+// import SvgIcon from '@/components/SvgIcon'
 // https://webpack.docschina.org/guides/dependency-management/#requirecontext
 // 通过 require.context() 函数来创建自己的 context
 const svgRequire = require.context('./svg', false, /\.svg$/)
@@ -11,6 +11,6 @@ const svgRequire = require.context('./svg', false, /\.svg$/)
 // 遍历图标，把图标作为 request 传入到 require 导入函数中，完成本地 svg 图标的导入
 svgRequire.keys().forEach(svgIcon => svgRequire(svgIcon))
 
-export default app => {
-  app.component('svg-icon', SvgIcon)
-}
+// export default app => {
+//   app.component('svg-icon', SvgIcon)
+// }

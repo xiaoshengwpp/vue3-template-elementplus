@@ -7,10 +7,10 @@ import installElementPlus from './plugins/element'
 import './assets/css/initializeStyle.css'
 import './styles/index.scss'
 // 导入 svgIcon
-import installIcons from '@/icons'
+// import installIcons from '@/icons'
 // 路由前置守卫
 import './routingGuard'
 const app = createApp(App)
 installElementPlus(app)
-installIcons(app)
+// installIcons(app)
 app.use(store).use(router).mount('#app')
