@@ -6,8 +6,8 @@
 </template>
 
 <script setup>
-import { defineProps, onMounted } from 'vue'
-const props = defineProps({
+import { defineProps } from 'vue'
+defineProps({
   title: {
     type: String,
     required: true
@@ -16,12 +16,6 @@ const props = defineProps({
     type: String,
     required: true
   }
-})
-// 看了文档才 猜到咋用。。。
-onMounted(() => {
-  // 没有this
-  // console.log(this)\
-  console.log(props.icon)
 })
 </script>
 
