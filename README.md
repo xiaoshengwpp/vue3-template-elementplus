@@ -75,10 +75,14 @@ SvgIcon：components--SvgIcon 文件内 使用方法：
 <el-dropdown-item @click="logout" divided>
               退出登录
 </el-dropdown-item>
-如上 这里用的最新版的饿了么ui库 1.3.0-beta.3 这个组件绑定点击事件 为何不生效
-emmmm 这个问题困扰了我好久 始终没找到具体原因
-看了下他这个组件实现好像也没什么问题 算了 不纠结这个问题了 只当是它bug了
-我在外面包了一层 span 把点击时间绑定在span上解决了问题
+如上 这里用的最新版的饿了么ui库 1.3.0-beta.3 这个组件绑定点击事件 为何不生效 emmmm
+这个问题困扰了我好久  始终没找到具体原因
+算了 不纠结这个问题了 只当是它bug了
+我在外面包了一层 span  把点击时间绑定在span上解决了问题
+后面发现ui库升级了 然后也果断升级 1.3.0-beta.5 这个版本中没有以上问题
+
+::v-deep usage as a combinator has been deprecated. Use :deep(<inner-selector>) instead
+    也换成了最新的写法
 ```
 
 ```javascript
