@@ -19,41 +19,41 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import { useStore } from "vuex";
+import { ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 
-const route = useRoute();
+const route = useRoute()
 // 生成数据
-const breadcrumbData = ref([]);
+const breadcrumbData = ref([])
 const getBreadcrumbData = () => {
   breadcrumbData.value = route.matched.filter(
     (item) => item.meta && item.meta.title
-  );
+  )
   // console.log(breadcrumbData.value)
-};
+}
 // 监听路由变化时触发
 watch(
   route,
   () => {
-    getBreadcrumbData();
+    getBreadcrumbData()
   },
   {
-    immediate: true,
+    immediate: true
   }
-);
+)
 
 // 处理点击事件
-const router = useRouter();
+const router = useRouter()
 const onLinkClick = (item) => {
-  console.log(item);
-  router.push(item.path);
-};
+  console.log(item)
+  router.push(item.path)
+}
 
 // 将来需要进行主题替换，所以这里获取下动态样式
-const store = useStore();
+const store = useStore()
 // eslint-disable-next-line
-const linkHoverColor = ref(store.getters.cssVar.menuBg);
+const linkHoverColor = ref(store.getters.cssVar.menuBg)
 </script>
 
 <style lang="scss" scoped>

@@ -2,15 +2,15 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import installElementPlus from './plugins/element'
+// import installElementPlus from './plugins/element'
 // 初始化样式
 import './assets/css/initializeStyle.css'
-import './styles/index.scss'
+// import './styles/index.scss'
 // 导入 svgIcon
 // import installIcons from '@/icons'
 // 路由前置守卫
 import './routingGuard'
 const app = createApp(App)
-installElementPlus(app)
+// installElementPlus(app)
 // installIcons(app)
 app.use(store).use(router).mount('#app')

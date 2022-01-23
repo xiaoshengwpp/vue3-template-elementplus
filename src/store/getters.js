@@ -7,7 +7,7 @@ const getters = {
     return JSON.stringify(state.user.userInfo) !== '{}'
   },
   userInfo: state => state.user.userInfo,
-  cssVar: state => variables,
+  cssVar: state => variables, // 共享js变量 vite 里失效了
   sidebarOpened: state => state.app.sidebarOpened
 }
 

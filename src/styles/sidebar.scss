@@ -1,14 +1,15 @@
+// @import './variables.scss';
 #app {
   .main-container {
     min-height: 100%;
-    transition: margin-left #{$sideBarDuration};
-    margin-left: $sideBarWidth;
+    transition: margin-left #{0.28s};
+    margin-left: 210px;
     position: relative;
   }
 
   .sidebar-container {
-    transition: width #{$sideBarDuration};
-    width: $sideBarWidth !important;
+    transition: width #{0.28s};
+    width: 210px !important;
     height: 100%;
     position: fixed;
     top: 0;
@@ -67,12 +68,12 @@
     }
 
     .is-active > .el-submenu__title {
-      color: $subMenuActiveText !important;
+      color: #f4f4f5 !important;
     }
 
     & .nest-menu .el-submenu > .el-submenu__title,
     & .el-submenu .el-menu-item {
-      min-width: $sideBarWidth !important;
+      min-width: 210px !important;
     }
   }
 
@@ -138,7 +139,7 @@
   }
 
   .el-menu--collapse .el-menu .el-submenu {
-    min-width: $sideBarWidth !important;
+    min-width: 210px !important;
   }
 
   .withoutAnimation {
